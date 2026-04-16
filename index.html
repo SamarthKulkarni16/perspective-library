@@ -859,7 +859,16 @@ const modalCompletedTxt = document.getElementById('modal-completed-text');
 // -----------------------------------------
 let currentUser = null;
 
+// Fallback: if Firebase doesn't respond in 5s, show auth screen anyway
+const authTimeout = setTimeout(() => {
+  if (loadingScreen.style.display !== 'none') {
+    loadingScreen.style.display = 'none';
+    showAuth();
+  }
+}, 5000);
+
 auth.onAuthStateChanged(user => {
+  clearTimeout(authTimeout);
   loadingScreen.style.display = 'none';
   currentUser = user;
   if (user) {
@@ -944,7 +953,7 @@ emailForm.addEventListener('submit', async e => {
       btnEnter.textContent = 'Enter Library';
       return;
     }
-  }
+  
 
   btnEnter.disabled    = false;
   btnEnter.textContent = 'Enter Library';
