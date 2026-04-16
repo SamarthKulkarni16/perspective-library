@@ -620,7 +620,7 @@
   <div class="auth-box">
     <div class="auth-header">
       <div class="auth-logo">
-        <img src="/logo.png" alt="Perspective Library" />
+        <img src="logo.png" alt="Perspective Library" />
       </div>
       <div class="auth-title">Perspective Library</div>
       <div class="auth-sub">A private reading room.</div>
@@ -724,7 +724,7 @@
 
 <script>
 // -----------------------------------------
-//  BOOKS — add your content here
+//  BOOKS Â— add your content here
 //  Each entry: { title, subtitle, category, color, content }
 //  color: any CSS gradient string for the book spine / cover bar
 //  content: the full book text (use \n for paragraphs)
@@ -837,7 +837,7 @@ btnGoogle.addEventListener('click', async () => {
 });
 
 // -----------------------------------------
-//  Email form — handles login + signup
+//  Email form Â— handles login + signup
 // -----------------------------------------
 emailForm.addEventListener('submit', async e => {
   e.preventDefault();
@@ -849,7 +849,7 @@ emailForm.addEventListener('submit', async e => {
   if (!email || !password) return;
 
   btnEnter.disabled     = true;
-  btnEnter.textContent  = 'Entering…';
+  btnEnter.textContent  = 'EnteringÂ…';
 
   try {
     await auth.signInWithEmailAndPassword(email, password);
