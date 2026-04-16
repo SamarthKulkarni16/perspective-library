@@ -1088,7 +1088,7 @@ async function openModal(article, color) {
 
   if (article.content) {
     modalContent.className       = 'modal-body';
-    modalContent.textContent     = article.content;
+    modalContent.innerHTML     = article.content;
   } else {
     modalContent.className       = 'modal-body-empty';
     modalContent.textContent     = 'Book content coming soon.';
