@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perspective Library</title>
 
-  <!-- Firebase v9 compat -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rye&display=swap" rel="stylesheet">
@@ -27,7 +25,6 @@
       --muted: #666;
       --accent: #e8e8e8;
       --accent-dim: rgba(255,255,255,0.05);
-      --google: #fff;
     }
 
     html, body {
@@ -38,7 +35,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* -- AUTH --------------------------------------- */
+    /* AUTH */
     #auth-screen {
       min-height: 100vh;
       display: flex;
@@ -46,554 +43,165 @@
       justify-content: center;
       padding: 24px;
     }
-
-    .auth-box {
-      width: 100%;
-      max-width: 380px;
-    }
-
-    .auth-header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .auth-logo {
-      display: block;
-      margin: 0 auto 18px;
-      width: 100%;
-      max-width: 340px;
-    }
-
-    .auth-logo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .auth-title {
-      font-family: 'Rye', serif;
-      font-size: 24px;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    .auth-sub {
-      margin-top: 6px;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    .auth-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-    }
+    .auth-box { width: 100%; max-width: 380px; }
+    .auth-header { text-align: center; margin-bottom: 36px; }
+    .auth-logo { display: block; margin: 0 auto 18px; width: 100%; max-width: 340px; }
+    .auth-logo img { width: 100%; height: auto; display: block; }
+    .auth-title { font-family: 'Rye', serif; font-size: 24px; color: var(--text); letter-spacing: 0.02em; }
+    .auth-sub { margin-top: 6px; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+    .auth-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; }
 
     .btn-google {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #fff;
-      color: #1a1a1a;
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #fff; color: #1a1a1a; border: none; border-radius: 12px; padding: 12px;
+      font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer;
       transition: background 0.15s, box-shadow 0.15s;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.3);
-      letter-spacing: 0.02em;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.3); letter-spacing: 0.02em;
     }
-
     .btn-google:hover { background: #f5f5f5; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-
     .btn-google svg { flex-shrink: 0; }
 
     .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 22px 0;
-      color: var(--muted);
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
+      display: flex; align-items: center; gap: 12px; margin: 22px 0;
+      color: var(--muted); font-size: 11px;
     }
-
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
     .field { margin-bottom: 14px; }
-
-    .field label {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
+    .field label { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     .field input {
-      width: 100%;
-      background: #050505;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 11px 14px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
+      width: 100%; background: #050505; border: 1px solid var(--border); border-radius: 10px;
+      padding: 11px 14px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text);
+      outline: none; transition: border-color 0.15s;
     }
-
     .field input::placeholder { color: #444; }
-
-    .field input:focus {
-      border-color: rgba(255,255,255,0.3);
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
-    }
+    .field input:focus { border-color: rgba(255,255,255,0.3); box-shadow: 0 0 0 3px rgba(255,255,255,0.05); }
 
     .btn-enter {
-      width: 100%;
-      background: #f0f0f0;
-      color: #0f0f0f;
-      border: none;
-      border-radius: 12px;
-      padding: 13px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s, background 0.15s;
-      margin-top: 4px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      letter-spacing: 0.03em;
+      width: 100%; background: #f0f0f0; color: #0f0f0f; border: none; border-radius: 12px;
+      padding: 13px; font-family: 'Inter', sans-serif; font-size: 13px; cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s; margin-top: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4); letter-spacing: 0.03em;
     }
-
     .btn-enter:hover { opacity: 0.9; }
     .btn-enter:active { transform: scale(0.99); }
     .btn-enter:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .auth-error {
-      background: rgba(239,68,68,0.1);
-      border: 1px solid rgba(239,68,68,0.2);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 13px;
-      color: #f87171;
-      margin-top: 14px;
-      display: none;
+      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #f87171;
+      margin-top: 14px; display: none;
     }
 
-    /* -- LIBRARY ------------------------------------ */
+    /* LIBRARY */
     #library-screen { display: none; min-height: 100vh; }
 
     .lib-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 32px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .lib-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Rye', serif;
-      font-size: 15px;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    .lib-brand-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #fff;
-    }
-
-    .lib-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .user-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
+    .lib-brand { display: flex; align-items: center; gap: 10px; font-family: 'Rye', serif; font-size: 15px; color: var(--text); letter-spacing: 0.02em; }
+    .lib-brand-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+    .lib-right { display: flex; align-items: center; gap: 16px; }
+    .user-pill { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
     .user-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #333;
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-      overflow: hidden;
+      width: 28px; height: 28px; border-radius: 50%; background: #333;
+      border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center;
+      justify-content: center; font-size: 11px; font-weight: 700; color: #fff; overflow: hidden;
     }
-
-    .user-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .btn-signout {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 5px 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s;
-      letter-spacing: 0.02em;
+      background: none; border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px;
+      font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); cursor: pointer;
+      transition: color 0.15s, border-color 0.15s; letter-spacing: 0.02em;
     }
-
     .btn-signout:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
 
     .lib-main { max-width: 1100px; margin: 0 auto; padding: 48px 32px; }
+    .lib-heading { margin-bottom: 40px; }
+    .lib-heading-eyebrow { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .lib-heading h1 { font-size: 32px; color: var(--text); letter-spacing: 0.02em; }
 
-    .lib-heading {
-      margin-bottom: 40px;
-    }
+    /* BOOK GRID */
+    #book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 24px; }
 
-    .lib-heading-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .lib-heading h1 {
-      font-family: 'Inter', sans-serif;
-      font-size: 32px;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    /* -- BOOK GRID ------------------------------------ */
-    #book-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 24px;
-    }
-
-    .book-card {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.2s;
-    }
-
+    .book-card { cursor: pointer; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s; }
     .book-card:hover { transform: translateY(-4px); }
 
     .book-cover {
-      aspect-ratio: 2/3;
-      border-radius: 6px 12px 12px 6px;
-      position: relative;
-      overflow: hidden;
-      box-shadow:
-        -4px 0 0 0 rgba(0,0,0,0.4),
-        4px 4px 20px rgba(0,0,0,0.6),
-        inset -3px 0 6px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 18px 14px;
+      aspect-ratio: 2/3; border-radius: 6px 12px 12px 6px; position: relative; overflow: hidden;
+      box-shadow: -4px 0 0 0 rgba(0,0,0,0.4), 4px 4px 20px rgba(0,0,0,0.6), inset -3px 0 6px rgba(0,0,0,0.3);
+      display: flex; flex-direction: column; justify-content: space-between; padding: 18px 14px;
     }
-
     .book-cover::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 6px;
-      background: rgba(0,0,0,0.35);
-      border-radius: 6px 0 0 6px;
-      z-index: 1;
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+      background: rgba(0,0,0,0.35); border-radius: 6px 0 0 6px; z-index: 1;
     }
-
     .book-cover::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
+    .book-category { position: relative; z-index: 2; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .book-title-cover { position: relative; z-index: 2; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.92); }
+    .book-meta { display: flex; flex-direction: column; gap: 3px; }
+    .book-title-below { font-size: 11px; color: var(--text); line-height: 1.4; }
+    .book-subtitle-below { font-size: 10px; color: var(--muted); line-height: 1.4; }
+    .book-readtime { font-size: 10px; color: #444; margin-top: 2px; }
 
-    .book-category {
-      position: relative;
-      z-index: 2;
-      font-family: 'Inter', sans-serif;
-      font-size: 8px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-    }
+    /* EMPTY STATE */
+    #empty-state { display: none; text-align: center; padding: 80px 0; color: var(--muted); }
+    #empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.3; }
+    #empty-state h2 { font-size: 20px; color: #444; margin-bottom: 8px; }
+    #empty-state p { font-size: 13px; color: #3a3a3a; max-width: 320px; margin: 0 auto; line-height: 1.6; }
 
-    .book-title-cover {
-      position: relative;
-      z-index: 2;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      line-height: 1.4;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .book-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .book-title-below {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .book-subtitle-below {
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .book-readtime {
-      font-size: 10px;
-      color: #444;
-      margin-top: 2px;
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* -- EMPTY STATE -------------------------------- */
-    #empty-state {
-      display: none;
-      text-align: center;
-      padding: 80px 0;
-      color: var(--muted);
-    }
-
-    #empty-state svg {
-      width: 48px; height: 48px;
-      margin: 0 auto 16px;
-      opacity: 0.3;
-    }
-
-    #empty-state h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 20px;
-      color: #444;
-      margin-bottom: 8px;
-    }
-
-    #empty-state p {
-      font-size: 13px;
-      color: #3a3a3a;
-      max-width: 320px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* -- MODAL ---------------------------------------- */
+    /* MODAL */
     #modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 100;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      padding: 24px;
-      overflow-y: auto;
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 100;
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); padding: 24px; overflow-y: auto;
     }
-
     #modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
 
     .modal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 680px;
-      margin: auto;
-      padding: 0;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+      width: 100%; max-width: 680px; margin: auto; padding: 0; overflow: hidden;
       animation: modal-in 0.2s ease;
     }
-
     @keyframes modal-in {
       from { opacity: 0; transform: translateY(12px) scale(0.98); }
-      to   { opacity: 1; transform: translateY(0)   scale(1);    }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .modal-cover-bar {
-      height: 6px;
-      width: 100%;
-    }
-
-    .modal-header {
-      padding: 28px 32px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .modal-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .modal-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 22px;
-      line-height: 1.35;
-      color: var(--text);
-    }
-
-    .modal-subtitle {
-      margin-top: 8px;
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.5;
-      font-style: italic;
-    }
-
+    .modal-cover-bar { height: 6px; width: 100%; }
+    .modal-header { padding: 28px 32px 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .modal-eyebrow { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .modal-title { font-size: 22px; line-height: 1.35; color: var(--text); }
+    .modal-subtitle { margin-top: 8px; font-size: 15px; color: var(--muted); line-height: 1.5; font-style: italic; }
     .modal-close {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      line-height: 1;
+      flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--surface2);
+      border: 1px solid var(--border); color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1;
       transition: color 0.15s, background 0.15s;
     }
-
     .modal-close:hover { color: var(--text); background: #2a2a2a; }
+    .modal-divider { margin: 24px 32px 0; height: 1px; background: var(--border); }
 
-    .modal-divider {
-      margin: 24px 32px 0;
-      height: 1px;
-      background: var(--border);
-    }
+    /* PROGRESS */
+    #modal-progress-wrap { padding: 14px 32px 0; display: none; }
+    #modal-progress-track { height: 3px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+    #modal-progress-fill { height: 100%; background: #e8e8e8; border-radius: 99px; width: 0%; transition: width 0.3s ease; }
+    #modal-progress-text { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+    #modal-completed-text { padding: 14px 32px 0; font-size: 12px; color: #aaa; letter-spacing: 0.06em; display: none; }
 
-    /* -- PROGRESS BAR ------------------------------- */
-    #modal-progress-wrap {
-      padding: 14px 32px 0;
-      display: none;
-    }
+    /* READING AREA */
+    .modal-body { padding: 20px 32px 36px; font-size: 16px; line-height: 1.8; color: #ccc; white-space: pre-wrap; }
+    .modal-body-empty { padding: 20px 32px 36px; font-size: 14px; color: #444; font-style: italic; }
 
-    #modal-progress-track {
-      height: 3px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 99px;
-      overflow: hidden;
-      margin-bottom: 6px;
-    }
-
-    #modal-progress-fill {
-      height: 100%;
-      background: #e8e8e8;
-      border-radius: 99px;
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    #modal-progress-text {
-      font-size: 11px;
-      color: var(--muted);
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.05em;
-    }
-
-    #modal-completed-text {
-      padding: 14px 32px 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 0.06em;
-      display: none;
-    }
-
-    /* -- READING AREA ------------------------------- */
-    .modal-body {
-      padding: 20px 32px 36px;
-      font-size: 16px;
-      line-height: 1.8;
-      color: #ccc;
-      white-space: pre-wrap;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .modal-body-empty {
-      padding: 20px 32px 36px;
-      font-size: 14px;
-      color: #444;
-      font-style: italic;
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* -- LOADING ------------------------------------ */
-    #loading-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 2px solid rgba(255,255,255,0.1);
-      border-top-color: #ccc;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-
+    /* LOADING */
+    #loading-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .spinner { width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.1); border-top-color: #ccc; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 600px) {
@@ -625,9 +233,7 @@
       <div class="auth-title">Perspective Library</div>
       <div class="auth-sub">A private reading room.</div>
     </div>
-
     <div class="auth-card">
-      <!-- Google -->
       <button class="btn-google" id="btn-google">
         <svg width="18" height="18" viewBox="0 0 18 18">
           <path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/>
@@ -637,10 +243,7 @@
         </svg>
         Continue with Google
       </button>
-
       <div class="divider">or</div>
-
-      <!-- Email form -->
       <form id="email-form" autocomplete="off">
         <div class="field">
           <label>Name</label>
@@ -656,7 +259,6 @@
         </div>
         <button type="submit" class="btn-enter" id="btn-enter">Enter Library</button>
       </form>
-
       <div class="auth-error" id="auth-error"></div>
     </div>
   </div>
@@ -677,15 +279,12 @@
       <button class="btn-signout" id="btn-signout">Sign out</button>
     </div>
   </header>
-
   <main class="lib-main">
     <div class="lib-heading">
       <div class="lib-heading-eyebrow">Your Collection</div>
       <h1>The Library</h1>
     </div>
-
     <div id="book-grid"></div>
-
     <div id="empty-state">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -709,109 +308,87 @@
       <button class="modal-close" id="modal-close">&#215;</button>
     </div>
     <div class="modal-divider"></div>
-    <!-- Progress bar (shown while reading) -->
     <div id="modal-progress-wrap">
       <div id="modal-progress-track">
         <div id="modal-progress-fill"></div>
       </div>
       <div id="modal-progress-text">0% completed</div>
     </div>
-    <!-- Completed state (replaces bar at 100%) -->
-    <div id="modal-completed-text">Completed ?</div>
+    <div id="modal-completed-text">Completed ✓</div>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <script>
-// -----------------------------------------
-//  BOOKS  add your content here
-//  Each entry: { title, subtitle, category, color, content }
-//  color: any CSS gradient string for the book spine / cover bar
-//  content: the full book text (use \n for paragraphs)
-// -----------------------------------------
+// ─── BOOKS — add your content here ───────────────────────────────────────────
+// Each entry: { title, subtitle, category, color, content }
+// color: any CSS gradient string
+// content: full text (use \n\n for paragraph breaks)
+// ─────────────────────────────────────────────────────────────────────────────
 const ARTICLES = [
   {
     title: "How To Use Anger To Your Advantage",
-    subtitle: "Anger is not a problem if you know what is it",
-    category: "Emotions Use",
+    subtitle: "Anger is not a problem if you know what it is",
+    category: "Emotions",
     color: "linear-gradient(135deg, #1a1a2e, #16213e)",
-    content: "**Anger is always associated with bad & Evil. In our society, anger is treated as if it is a disease. And if you don’t know how to use it, it is a disease. Don’t worry, here, we have discussed anger in short, simple language, and with actionable steps.** 
+    content: `Anger is always associated with bad & evil. In our society, anger is treated as if it is a disease. And if you don't know how to use it, it is a disease. Don't worry — here we discuss anger in short, simple language, with actionable steps.
 
-1. **What is Anger?**
+1. What is Anger?
 
-**Anger is the emotion you get when you feel something wrong. It doesn’t matter if it is actually right or wrong, if you feel it, you get angry. This can happen due to feelings of injustice, disrespect, etc.**
+Anger is the emotion you get when you feel something is wrong. It doesn't matter if it is actually right or wrong; if you feel it, you get angry. This can happen due to feelings of injustice, disrespect, etc.
 
-2. **What Actually Happens When You Get Angry?**
+2. What Actually Happens When You Get Angry?
 
-**When you get angry, biologically, your body starts preparing for a fight whether it’s verbal or physical. Here is what actually going on…….**
+When you get angry, biologically, your body starts preparing for a fight — whether it's verbal or physical.
 
-**A. Your Prefrontal Cortex Gets Suppressed**
+A. Your Prefrontal Cortex Gets Suppressed
 
-<img src="https://drive.google.com/uc?export=view&id=1OP9-9iNlcgxz5h60Te10lh1txzr_35OL">
-  
-**The prefrontal cortex is the front part of your brain which is responsible for reasoning, judgment, impulse control. In short, your IQ drops and you become less intelligent during that period. As a result, you stop thinking logically. That’s why you will see a lot of people arguing on so stupid topics that don't even make sense to them after they cool down.**
+The prefrontal cortex is the front part of your brain responsible for reasoning, judgment, and impulse control. In short, your IQ drops and you become less intelligent during that period. As a result, you stop thinking logically. That's why you'll see people arguing about topics so stupid that they don't even make sense to them after they cool down.
 
-**B. Adrenaline Rush**
+B. Adrenaline Rush
 
-<img src="https://drive.google.com/uc?export=view&id=1i-1NyLYZaiNpnJ5A1oFLLBv6AN7iESzm">
-  
-**A very popular thing on the internet. Adrenaline dumps stress hormones in your blood which makes your heart pump faster, increasing energy supply, strengthening your muscles and increasing your pain tolerance. Now you are ready to fight.**
+Adrenaline dumps stress hormones into your blood, making your heart pump faster, increasing energy supply, strengthening your muscles, and raising your pain tolerance. Now you are ready to fight.
 
-**But, with those things going on, you make wrong decisions. For example, beating someone, screaming on someone, etc.**
+But with those things going on, you make wrong decisions — beating someone, screaming at someone, etc.
 
-**Now we will study how to use it to your advantage. For this, we have to classify anger into 2 categories - Verbal & Physical.**
+Now let's study how to use anger to your advantage. We classify anger into 2 categories: Verbal & Physical.
 
-1. **Verbal Anger**
+1. Verbal Anger
 
-**This is a comparatively lower form of anger. Verbal anger means you got angry because you want to tell something to someone. For example, you got angry because your friend spoiled your plan and now you feel like screaming at him. It’s easy to identify. When you want to say something to someone in anger, it’s verbal.**
+This is a comparatively lower form of anger. Verbal anger means you got angry because you want to say something to someone. For example, your friend spoiled your plan and now you feel like screaming at them. When you want to say something to someone in anger — that's verbal.
 
-**How To Use It To Your Advantage?**
+How To Use It To Your Advantage:
 
-   **When you get verbal anger,**
+When you get verbal anger, grab your phone and start an audio recording. Record everything you want to say. Don't post it anywhere — just record. When you cool down, review the recording.
 
-- **Get your phone and start audio recording.**
-- **Record everything you want to say.**
-- **Don’t Post anywhere, just record.**
-- **When you cool down, review the recording.**
+Because when you get angry, you say what you truly mean without hesitation. This is the clearest speech. Review it and if there is something important, note it. If not, delete the recording.
 
-**Because when you get angry, you say what you want to say without hesitation. This is the clearest speech. Review it and if there is something important, note it. If not, delete the recording.**
+2. Physical Anger
 
-2. **Physical Anger**
+This is the high form of anger. Here, you want to physically lash out because someone has committed a huge mistake. This happens due to adrenaline. It's easy to identify — when you want to beat someone, it's physical anger.
 
-**This is the high form of anger. Here, you want to beat someone because they have committed a huge mistake. Sometimes, you even want to kill them. Don’t do that. This happens due to adrenaline as we talked. It is also easy to identify, when you want to beat someone, it’s physical anger.**
+How To Use It To Your Advantage:
 
-**How To Use It To Your Advantage?**
+When you get physical anger, do 50 push-ups. Or do 50 squats. That's it. You have to use that energy. If you don't guide that energy, it will lead to disaster. Do any form of workout. If you want to fight, try shadow boxing.
 
-**When you get physical anger,**
+Use anger as a nitro booster — just like in a car, it gives you a burst of power. But don't get dependent on it. Anger is a booster because it comes randomly. It is not a tool because tools stay forever, and anger doesn't.
 
-- **Do 50 Push-Ups**
+See You.
 
-Or
-
-- Do 50 Squats
-
-**That’s it. You have to use that energy. If you don’t guide that energy, it will go to disaster. Do any form of workout (don’t forget warmup). If you want to fight, try shadow boxing. Use it as a nitro booster. Just like in a car, it helps you, it will also help in life. Don’t forget one thing, anger is a booster, not a tool. Don’t get dependent on it. It is a booster because this comes randomly. This is not a tool because tools stay forever and anger doesn’t.** 
-
-**See You.**
-
-**Your Friend,**
-
-**Samarth Kulkarni**"
+Your Friend,
+Samarth Kulkarni`
   },
-];
-  // Example (delete or keep):
+  // ── Add more books below ──────────────────────────────────────────────────
   // {
   //   title: "The Illusion of Certainty",
   //   subtitle: "Why ambiguity is the natural state of things.",
   //   category: "Philosophy",
   //   color: "linear-gradient(135deg, #1a1a1a, #3a3a3a)",
-  //   content: "Your book text goes here.\n\nAdd as many paragraphs as you like."
+  //   content: `Your book text goes here.\n\nAdd as many paragraphs as you like.`
   // },
 ];
 
-// -----------------------------------------
-//  Firebase init
-// -----------------------------------------
+// ─── Firebase init ────────────────────────────────────────────────────────────
 firebase.initializeApp({
   apiKey: "AIzaSyDSi-_yS2SeW6QqvSxfkJ7RHJZ-ArMz0j0",
   authDomain: "perspective-library.firebaseapp.com",
@@ -824,9 +401,7 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const db   = firebase.firestore();
 
-// -----------------------------------------
-//  Elements
-// -----------------------------------------
+// ─── Elements ─────────────────────────────────────────────────────────────────
 const loadingScreen     = document.getElementById('loading-screen');
 const authScreen        = document.getElementById('auth-screen');
 const libraryScreen     = document.getElementById('library-screen');
@@ -854,9 +429,7 @@ const modalProgressFill = document.getElementById('modal-progress-fill');
 const modalProgressText = document.getElementById('modal-progress-text');
 const modalCompletedTxt = document.getElementById('modal-completed-text');
 
-// -----------------------------------------
-//  Auth state
-// -----------------------------------------
+// ─── Auth state ───────────────────────────────────────────────────────────────
 let currentUser = null;
 
 // Fallback: if Firebase doesn't respond in 5s, show auth screen anyway
@@ -886,24 +459,18 @@ function showAuth() {
 function showLibrary(user) {
   authScreen.style.display    = 'none';
   libraryScreen.style.display = 'block';
-
   const name = user.displayName || user.email?.split('@')[0] || 'Reader';
-
   userNameEl.textContent   = name;
   userNameEl.style.display = 'inline';
-
   if (user.photoURL) {
     userAvatarEl.innerHTML = `<img src="${user.photoURL}" alt="${name}" />`;
   } else {
     userAvatarEl.textContent = name[0].toUpperCase();
   }
-
   renderBooks();
 }
 
-// -----------------------------------------
-//  Google sign-in
-// -----------------------------------------
+// ─── Google sign-in ───────────────────────────────────────────────────────────
 btnGoogle.addEventListener('click', async () => {
   clearError();
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -914,9 +481,7 @@ btnGoogle.addEventListener('click', async () => {
   }
 });
 
-// -----------------------------------------
-//  Email form  handles login + signup
-// -----------------------------------------
+// ─── Email form — handles login + signup ──────────────────────────────────────
 emailForm.addEventListener('submit', async e => {
   e.preventDefault();
   clearError();
@@ -926,13 +491,17 @@ emailForm.addEventListener('submit', async e => {
 
   if (!email || !password) return;
 
-  btnEnter.disabled     = true;
-  btnEnter.textContent  = 'Entering';
+  btnEnter.disabled    = true;
+  btnEnter.textContent = 'Entering…';
 
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (err) {
-    if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/invalid-email') {
+    if (
+      err.code === 'auth/user-not-found' ||
+      err.code === 'auth/invalid-credential' ||
+      err.code === 'auth/invalid-email'
+    ) {
       try {
         const cred = await auth.createUserWithEmailAndPassword(email, password);
         if (name) await cred.user.updateProfile({ displayName: name });
@@ -953,47 +522,41 @@ emailForm.addEventListener('submit', async e => {
       btnEnter.textContent = 'Enter Library';
       return;
     }
-  
+  }
 
   btnEnter.disabled    = false;
   btnEnter.textContent = 'Enter Library';
 });
 
-// -----------------------------------------
-//  Sign out
-// -----------------------------------------
+// ─── Sign out ─────────────────────────────────────────────────────────────────
 btnSignout.addEventListener('click', () => auth.signOut());
 
-// -----------------------------------------
-//  Error helpers
-// -----------------------------------------
+// ─── Error helpers ────────────────────────────────────────────────────────────
 function showError(msg) {
-  authError.textContent    = msg;
-  authError.style.display  = 'block';
+  authError.textContent   = msg;
+  authError.style.display = 'block';
 }
 function clearError() {
-  authError.style.display  = 'none';
-  authError.textContent    = '';
+  authError.style.display = 'none';
+  authError.textContent   = '';
 }
 function friendlyError(code) {
   const map = {
-    'auth/invalid-email':         'Please enter a valid email address.',
-    'auth/user-disabled':         'This account has been disabled.',
-    'auth/user-not-found':        'No account found. Check your email or create an account.',
-    'auth/wrong-password':        'Incorrect password.',
-    'auth/email-already-in-use':  'An account with this email already exists.',
-    'auth/weak-password':         'Password must be at least 6 characters.',
-    'auth/popup-closed-by-user':  'Google sign-in was cancelled.',
-    'auth/network-request-failed':'Network error. Check your connection.',
-    'auth/invalid-credential':    'Incorrect email or password.',
-    'auth/too-many-requests':     'Too many attempts. Try again later.',
+    'auth/invalid-email':          'Please enter a valid email address.',
+    'auth/user-disabled':          'This account has been disabled.',
+    'auth/user-not-found':         'No account found. Check your email or sign up.',
+    'auth/wrong-password':         'Incorrect password.',
+    'auth/email-already-in-use':   'An account with this email already exists.',
+    'auth/weak-password':          'Password must be at least 6 characters.',
+    'auth/popup-closed-by-user':   'Google sign-in was cancelled.',
+    'auth/network-request-failed': 'Network error. Check your connection.',
+    'auth/invalid-credential':     'Incorrect email or password.',
+    'auth/too-many-requests':      'Too many attempts. Try again later.',
   };
   return map[code] || 'Something went wrong. Please try again.';
 }
 
-// -----------------------------------------
-//  Reading time helper
-// -----------------------------------------
+// ─── Reading time helper ──────────────────────────────────────────────────────
 function readingTime(content) {
   if (!content) return null;
   const words = content.trim().split(/\s+/).length;
@@ -1001,9 +564,7 @@ function readingTime(content) {
   return `${mins} min read`;
 }
 
-// -----------------------------------------
-//  Book grid
-// -----------------------------------------
+// ─── Book grid ────────────────────────────────────────────────────────────────
 const DEFAULT_COLORS = [
   'linear-gradient(150deg, #1a1a1a, #3a3a3a)',
   'linear-gradient(150deg, #111, #2e2e2e)',
@@ -1029,8 +590,8 @@ function renderBooks() {
   bookGrid.style.display   = 'grid';
 
   ARTICLES.forEach((article, i) => {
-    const color   = article.color || DEFAULT_COLORS[i % DEFAULT_COLORS.length];
-    const rt      = readingTime(article.content);
+    const color = article.color || DEFAULT_COLORS[i % DEFAULT_COLORS.length];
+    const rt    = readingTime(article.content);
 
     const card = document.createElement('div');
     card.className = 'book-card';
@@ -1045,30 +606,24 @@ function renderBooks() {
         ${rt ? `<div class="book-readtime">${rt}</div>` : ''}
       </div>
     `;
-
     card.addEventListener('click', () => openModal(article, color));
     bookGrid.appendChild(card);
   });
 }
 
-// -----------------------------------------
-//  Firestore helpers
-// -----------------------------------------
+// ─── Firestore helpers ────────────────────────────────────────────────────────
 function sanitize(str) {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, '_');
 }
-
 function progressDocId(email, title) {
   return sanitize(email) + '_' + sanitize(title);
 }
-
 async function loadProgress(email, title) {
   try {
     const snap = await db.collection('progress').doc(progressDocId(email, title)).get();
     return snap.exists ? snap.data() : null;
   } catch { return null; }
 }
-
 async function saveProgress(email, title, percent, completed) {
   try {
     await db.collection('progress').doc(progressDocId(email, title)).set({
@@ -1077,55 +632,47 @@ async function saveProgress(email, title, percent, completed) {
   } catch { /* silent */ }
 }
 
-// -----------------------------------------
-//  Modal + progress tracking
-// -----------------------------------------
-let scrollListener  = null;
-let saveDebounce    = null;
+// ─── Modal + progress tracking ────────────────────────────────────────────────
+let scrollListener   = null;
+let saveDebounce     = null;
 let currentBookTitle = '';
-let isCompleted     = false;
+let isCompleted      = false;
 
 async function openModal(article, color) {
   currentBookTitle = article.title;
   isCompleted      = false;
 
-  modalCoverBar.style.background  = color;
-  modalEyebrow.textContent        = article.category || '';
-  modalTitle.textContent          = article.title    || '';
-  modalSubtitle.textContent       = article.subtitle || '';
-  modalSubtitle.style.display     = article.subtitle ? 'block' : 'none';
+  modalCoverBar.style.background = color;
+  modalEyebrow.textContent       = article.category || '';
+  modalTitle.textContent         = article.title    || '';
+  modalSubtitle.textContent      = article.subtitle || '';
+  modalSubtitle.style.display    = article.subtitle ? 'block' : 'none';
 
   if (article.content) {
-    modalContent.className       = 'modal-body';
-    modalContent.innerHTML     = article.content;
+    modalContent.className  = 'modal-body';
+    modalContent.textContent = article.content;
   } else {
-    modalContent.className       = 'modal-body-empty';
-    modalContent.textContent     = 'Book content coming soon.';
+    modalContent.className  = 'modal-body-empty';
+    modalContent.textContent = 'Book content coming soon.';
   }
 
-  // Reset progress UI
-  modalProgressWrap.style.display  = 'none';
-  modalCompletedTxt.style.display  = 'none';
-  modalProgressFill.style.width    = '0%';
-  modalProgressText.textContent    = '0% completed';
+  modalProgressWrap.style.display = 'none';
+  modalCompletedTxt.style.display = 'none';
+  modalProgressFill.style.width   = '0%';
+  modalProgressText.textContent   = '0% completed';
 
   modalOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
-
-  // Restore scroll to top first
   modalOverlay.scrollTop = 0;
 
-  // Load Firestore progress
   if (currentUser && article.content) {
     const saved = await loadProgress(currentUser.email, article.title);
-
     if (saved && saved.completed) {
       isCompleted = true;
       showCompletedState();
     } else {
       showProgressBar(saved ? saved.percent || 0 : 0);
       if (saved && saved.percent > 0) {
-        // Restore scroll position
         const totalScroll = modalOverlay.scrollHeight - modalOverlay.clientHeight;
         modalOverlay.scrollTop = (saved.percent / 100) * totalScroll;
       }
@@ -1134,7 +681,6 @@ async function openModal(article, color) {
     showProgressBar(0);
   }
 
-  // Attach scroll listener
   if (article.content) {
     scrollListener = () => onModalScroll();
     modalOverlay.addEventListener('scroll', scrollListener);
@@ -1142,26 +688,25 @@ async function openModal(article, color) {
 }
 
 function showProgressBar(pct) {
-  modalProgressWrap.style.display  = 'block';
-  modalCompletedTxt.style.display  = 'none';
-  modalProgressFill.style.width    = pct + '%';
-  modalProgressText.textContent    = Math.round(pct) + '% completed';
+  modalProgressWrap.style.display = 'block';
+  modalCompletedTxt.style.display = 'none';
+  modalProgressFill.style.width   = pct + '%';
+  modalProgressText.textContent   = Math.round(pct) + '% completed';
 }
 
 function showCompletedState() {
-  modalProgressWrap.style.display  = 'none';
-  modalCompletedTxt.style.display  = 'block';
+  modalProgressWrap.style.display = 'none';
+  modalCompletedTxt.style.display = 'block';
 }
 
 function onModalScroll() {
   if (isCompleted) return;
+  const el    = modalOverlay;
+  const total = el.scrollHeight - el.clientHeight;
+  const pct   = total <= 0 ? 100 : Math.min(100, Math.round((el.scrollTop / total) * 100));
 
-  const el      = modalOverlay;
-  const total   = el.scrollHeight - el.clientHeight;
-  const pct     = total <= 0 ? 100 : Math.min(100, Math.round((el.scrollTop / total) * 100));
-
-  modalProgressFill.style.width   = pct + '%';
-  modalProgressText.textContent   = pct + '% completed';
+  modalProgressFill.style.width = pct + '%';
+  modalProgressText.textContent = pct + '% completed';
 
   if (pct >= 100) {
     isCompleted = true;
@@ -1170,7 +715,6 @@ function onModalScroll() {
     return;
   }
 
-  // Debounced save every 3 seconds
   if (saveDebounce) clearTimeout(saveDebounce);
   saveDebounce = setTimeout(() => {
     if (currentUser) saveProgress(currentUser.email, currentBookTitle, pct, false);
@@ -1180,7 +724,6 @@ function onModalScroll() {
 function closeModal() {
   modalOverlay.classList.remove('open');
   document.body.style.overflow = '';
-
   if (scrollListener) {
     modalOverlay.removeEventListener('scroll', scrollListener);
     scrollListener = null;
@@ -1195,6 +738,5 @@ modalClose.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
-
 </body>
 </html>
