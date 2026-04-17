@@ -196,7 +196,83 @@
     #modal-completed-text { padding: 14px 32px 0; font-size: 12px; color: #aaa; letter-spacing: 0.06em; display: none; }
 
     /* READING AREA */
-    .modal-body { padding: 20px 32px 36px; font-size: 16px; line-height: 1.8; color: #ccc; white-space: pre-wrap; }
+    .modal-body {
+      padding: 20px 32px 36px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    /* Rich content styles inside modal */
+    .modal-body p {
+      margin-bottom: 1.2em;
+    }
+    .modal-body h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.8em 0 0.6em;
+      letter-spacing: 0.01em;
+    }
+    .modal-body h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ddd;
+      margin: 1.4em 0 0.5em;
+      letter-spacing: 0.01em;
+    }
+    .modal-body strong {
+      color: #e8e8e8;
+      font-weight: 600;
+    }
+    .modal-body ul, .modal-body ol {
+      padding-left: 1.4em;
+      margin-bottom: 1em;
+    }
+    .modal-body li {
+      margin-bottom: 0.4em;
+    }
+
+    /* TABLE STYLES */
+    .modal-body .table-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin: 1.8em 0 0.6em;
+    }
+    .modal-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.4em;
+      font-size: 14px;
+    }
+    .modal-body table th {
+      background: rgba(255,255,255,0.06);
+      color: #e0e0e0;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: left;
+    }
+    .modal-body table td {
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #bbb;
+      vertical-align: top;
+    }
+    .modal-body table tr:nth-child(even) td {
+      background: rgba(255,255,255,0.02);
+    }
+    .modal-body table .td-no {
+      color: #444;
+      font-style: italic;
+    }
+
     .modal-body-empty { padding: 20px 32px 36px; font-size: 14px; color: #444; font-style: italic; }
 
     /* LOADING */
@@ -213,6 +289,8 @@
       #modal-progress-wrap, #modal-completed-text { padding-left: 20px; padding-right: 20px; }
       .modal-body, .modal-body-empty { padding: 16px 20px 28px; }
       .modal-title { font-size: 18px; }
+      .modal-body table { font-size: 12px; }
+      .modal-body table th, .modal-body table td { padding: 7px 10px; }
     }
   </style>
 </head>
@@ -320,10 +398,8 @@
 </div>
 
 <script>
-// ─── BOOKS — add your content here ───────────────────────────────────────────
-// Each entry: { title, subtitle, category, color, content }
-// color: any CSS gradient string
-// content: full text (use \n\n for paragraph breaks)
+// ─── BOOKS ────────────────────────────────────────────────────────────────────
+// content can be a plain string (rendered as-is) OR an HTML string (if isHtml: true)
 // ─────────────────────────────────────────────────────────────────────────────
 const ARTICLES = [
   {
@@ -377,6 +453,106 @@ See You.
 
 Your Friend,
 Samarth Kulkarni`
+  },
+  {
+    title: "Use Procrastination To Your Advantage",
+    subtitle: "Stop fighting it. Start redirecting it.",
+    category: "Productivity",
+    color: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+    isHtml: true,
+    content: `
+<p>A huge issue which is famously known as procrastination. This is very trending. The issue is that people have talked about it so much and from so many different angles that it has become more confusing. So, you are at the right place you need. First we will understand and then learn how to use it to our advantage instead of solving — you know that's our way.</p>
+
+<h2>1. What is procrastination?</h2>
+<p>When you need to do something but you are avoiding it and doing other things, it's procrastination. You know it already, so let's get to the next topic without wasting time.</p>
+
+<h2>2. Why does procrastination occur?</h2>
+<p>When there is something to do like work, the brain starts thinking. We are also animals and our brain also works like animals. The main work of our brain is survival. And in order to survive, we focus on present not future — because if we survive now, we will be there later. That's why the brain focuses more on immediate reward.</p>
+
+<p>To understand procrastination, we need to stop thinking in terms of time and think in terms of energy. Read the following comparison:</p>
+
+<p class="table-label"><strong>Work</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Current Loss</th>
+      <th>Immediate Reward</th>
+      <th>Long Term Rewards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Energy In Large Quantity</td>
+      <td class="td-no">No</td>
+      <td>Discipline</td>
+    </tr>
+    <tr>
+      <td>Boredom</td>
+      <td class="td-no">No</td>
+      <td>Work Done</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="table-label"><strong>T.V.</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Current Loss</th>
+      <th>Immediate Reward</th>
+      <th>Long Term Rewards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Energy In Very Small Quantity</td>
+      <td>A lot of fun</td>
+      <td class="td-no">No</td>
+    </tr>
+    <tr>
+      <td>Almost No Friction</td>
+      <td>Feeling of getting things done</td>
+      <td class="td-no">No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Noticed it? Work is taking so much and giving nothing immediately, while T.V. is taking very little and giving so much. That's why we choose it. We are designed that way. We focus more on current gains rather than long term benefits because we don't know if we will be there at the time of future benefits — but we know we are alive right now.</p>
+
+<p>So as we have understood that our natural mechanism is focused on short term instead of long term, we will use it to our advantage. Before that, I'll tell you my story on how I learned this.</p>
+
+<h2>My Story</h2>
+<p>It was February 2025. My first video was uploaded on 16 January 2025. I used to think that I had great ability to speak in English in front of a camera. But after my first recording, I realized — it was so hard to talk in a language I never talked and do it in front of a camera. I wanted to make more videos but it was very hard and there was no reward. So I did it. Procrastination.</p>
+
+<p>But the problem was that after doing random things for a whole day, every day, when going to bed, I felt the pain of not doing. I know you have felt it too. And it sucks.</p>
+
+<p>So, one day, I decided to clean my cupboard because it was messy. I cleaned it in about an hour and when I was going to sleep that day, I felt that I did something. Next day, when the thought of recording came, I decided to clean my study table instead. Next day, I read 20 pages of a book. Days went by like that and I was done cleaning my whole room, reading 2 books, starting 2 new habits — just by procrastinating. (Later I did record the video, which was on this very topic.)</p>
+
+<h2>Using Procrastination — The Steps</h2>
+<p>You can take a screenshot or write this in notes. But I recommend you just use it once — you'll remember it far better.</p>
+
+<h3>Step 1 — Find Something To Procrastinate</h3>
+<p>Find something you want to do but that is very hard. Don't pick something trivially small. Something that you will do now or later but is very hard. The harder the task to procrastinate is, the more variety you get in the next step.</p>
+
+<h3>Step 2 — Find a Productive Task That Is Comparatively Easier</h3>
+<p>After deciding what to procrastinate, find tasks which are productive and comparatively easier. Examples: cleaning, organizing, walking, reading, etc. Find the one that suits you.</p>
+
+<h3>Step 3 — Procrastinate</h3>
+<p>Every day, use this framework:</p>
+<p><strong>Today, I am not going to _______ (the hard thing), but instead, I will _______ (comparatively easier thing).</strong></p>
+<p>For example:<br>
+1. Today, I am not going to record a video, but instead, I will clean my cupboard.<br>
+2. Today, I am not going to work on the project, but instead, I will organize my photos.</p>
+
+<h2>Final Notes</h2>
+<p>This technique works really well. One thing is that you do have to eventually do the hard things — I made the video after procrastinating. But using this technique is far better than just procrastinating with nothing to show for it.</p>
+
+<p>So, Go & Procrastinate.</p>
+
+<p>See You.<br>
+Your Friend,<br>
+<strong>Samarth Kulkarni</strong></p>
+    `
   },
   // ── Add more books below ──────────────────────────────────────────────────
   // {
@@ -432,7 +608,6 @@ const modalCompletedTxt = document.getElementById('modal-completed-text');
 // ─── Auth state ───────────────────────────────────────────────────────────────
 let currentUser = null;
 
-// Fallback: if Firebase doesn't respond in 5s, show auth screen anyway
 const authTimeout = setTimeout(() => {
   if (loadingScreen.style.display !== 'none') {
     loadingScreen.style.display = 'none';
@@ -481,7 +656,7 @@ btnGoogle.addEventListener('click', async () => {
   }
 });
 
-// ─── Email form — handles login + signup ──────────────────────────────────────
+// ─── Email form ───────────────────────────────────────────────────────────────
 emailForm.addEventListener('submit', async e => {
   e.preventDefault();
   clearError();
@@ -557,9 +732,10 @@ function friendlyError(code) {
 }
 
 // ─── Reading time helper ──────────────────────────────────────────────────────
-function readingTime(content) {
+function readingTime(content, isHtml) {
   if (!content) return null;
-  const words = content.trim().split(/\s+/).length;
+  const text = isHtml ? content.replace(/<[^>]+>/g, ' ') : content;
+  const words = text.trim().split(/\s+/).length;
   const mins  = Math.max(1, Math.round(words / 200));
   return `${mins} min read`;
 }
@@ -591,7 +767,7 @@ function renderBooks() {
 
   ARTICLES.forEach((article, i) => {
     const color = article.color || DEFAULT_COLORS[i % DEFAULT_COLORS.length];
-    const rt    = readingTime(article.content);
+    const rt    = readingTime(article.content, article.isHtml);
 
     const card = document.createElement('div');
     card.className = 'book-card';
@@ -649,10 +825,14 @@ async function openModal(article, color) {
   modalSubtitle.style.display    = article.subtitle ? 'block' : 'none';
 
   if (article.content) {
-    modalContent.className  = 'modal-body';
-    modalContent.textContent = article.content;
+    modalContent.className = 'modal-body';
+    if (article.isHtml) {
+      modalContent.innerHTML = article.content;
+    } else {
+      modalContent.textContent = article.content;
+    }
   } else {
-    modalContent.className  = 'modal-body-empty';
+    modalContent.className   = 'modal-body-empty';
     modalContent.textContent = 'Book content coming soon.';
   }
 
