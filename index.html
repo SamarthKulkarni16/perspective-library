@@ -362,7 +362,6 @@ html, body {
       <div class="user-avatar" id="user-avatar-el"></div>
       <button class="btn-nav" id="btn-signout">Sign out</button>
     </div>
-    </div>
   </header>
   <main class="lib-main">
     <div class="lib-heading">
@@ -759,7 +758,7 @@ function showAuth() {
 
 function showLibrary(user) {
   authScreen.style.display    = 'none';
-  libraryScreen.style.display = 'block';
+  libraryScreen.style.display = 'flex';
   const name = user.displayName || user.email?.split('@')[0] || 'Reader';
 
   if (user.photoURL) {
