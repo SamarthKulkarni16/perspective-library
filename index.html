@@ -45,7 +45,7 @@
       padding: 24px;
     }
     .auth-box { width: 100%; max-width: 380px; }
-    .auth-header { text-align: center; margin-bottom: 36px; }
+    .auth-header { text-align: center; margin-bottom: 16px; }
     .auth-logo { display: block; margin: 0 auto 12px; width: 56px; height: 56px; max-width: 56px; border-radius: 50%; overflow: hidden; }
     .auth-logo img {
   width: 100%;
@@ -69,6 +69,9 @@
       display: flex; align-items: center; gap: 12px; margin: 14px 0;
       color: var(--muted); font-size: 11px;
     }
+    .divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
 
     .field { margin-bottom: 10px; }
     .field label { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
