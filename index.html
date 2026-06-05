@@ -26,6 +26,7 @@
       --muted: #666;
       --accent: #e8e8e8;
       --accent-dim: rgba(255,255,255,0.05);
+    }
 html, body {
       background: var(--bg);
       color: var(--text);
@@ -752,8 +753,8 @@ auth.onAuthStateChanged(user => {
 });
 
 function showAuth() {
-  authScreen.style.display    = 'none';
-  libraryScreen.style.display = 'flex';
+  authScreen.style.display    = 'flex';
+  libraryScreen.style.display = 'none';
 }
 
 function showLibrary(user) {
