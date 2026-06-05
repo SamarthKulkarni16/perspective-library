@@ -26,13 +26,12 @@
       --muted: #666;
       --accent: #e8e8e8;
       --accent-dim: rgba(255,255,255,0.05);
-    }
-
-    html, body {
+html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -100,63 +99,63 @@
     }
 
     /* LIBRARY */
-    #library-screen { display: none; min-height: 100vh; }
+    #library-screen { display: none; height: 100vh; overflow: hidden; flex-direction: column; }
 
     .lib-header {
-      position: sticky; top: 0; z-index: 10;
+      flex-shrink: 0;
       background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); padding: 0 32px; height: 60px;
+      border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .lib-brand { display: flex; align-items: center; gap: 10px; font-family: 'Rye', serif; font-size: 15px; color: var(--text); letter-spacing: 0.02em; }
-    .lib-brand-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
-    .lib-right { display: flex; align-items: center; gap: 16px; }
-    .user-pill { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .lib-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .lib-brand-logo { width: 26px; height: 26px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+    .lib-brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .lib-brand-name { font-family: 'Rye', serif; font-size: 14px; color: var(--text); letter-spacing: 0.02em; }
+    .lib-right { display: flex; align-items: center; gap: 14px; }
     .user-avatar {
-      width: 28px; height: 28px; border-radius: 50%; background: #333;
+      width: 26px; height: 26px; border-radius: 50%; background: #333;
       border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center;
       justify-content: center; font-size: 11px; font-weight: 700; color: #fff; overflow: hidden;
     }
     .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .btn-signout {
-      background: none; border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px;
+    .btn-nav {
+      background: none; border: 1px solid var(--border); border-radius: 8px; padding: 4px 11px;
       font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); cursor: pointer;
       transition: color 0.15s, border-color 0.15s; letter-spacing: 0.02em;
     }
-    .btn-signout:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+    .btn-nav:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
 
-    .lib-main { max-width: 1100px; margin: 0 auto; padding: 48px 32px; }
-    .lib-heading { margin-bottom: 40px; }
-    .lib-heading-eyebrow { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .lib-heading h1 { font-size: 32px; color: var(--text); letter-spacing: 0.02em; }
+    .lib-main { flex: 1; overflow-y: auto; padding: 32px 32px 24px; }
+    .lib-heading { margin-bottom: 28px; }
+    .lib-heading-eyebrow { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .lib-heading h1 { font-size: 26px; color: var(--text); letter-spacing: 0.02em; }
 
     /* BOOK GRID */
-    #book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 24px; }
+    #book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
 
-    .book-card { cursor: pointer; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s; }
-    .book-card:hover { transform: translateY(-4px); }
+    .book-card { cursor: pointer; display: flex; flex-direction: column; gap: 8px; transition: transform 0.2s; }
+    .book-card:hover { transform: translateY(-3px); }
 
     .book-cover {
-      aspect-ratio: 2/3; border-radius: 6px 12px 12px 6px; position: relative; overflow: hidden;
+      aspect-ratio: 2/3; border-radius: 5px 10px 10px 5px; position: relative; overflow: hidden;
       box-shadow: -4px 0 0 0 rgba(0,0,0,0.4), 4px 4px 20px rgba(0,0,0,0.6), inset -3px 0 6px rgba(0,0,0,0.3);
-      display: flex; flex-direction: column; justify-content: space-between; padding: 18px 14px;
+      display: flex; flex-direction: column; justify-content: space-between; padding: 14px 12px;
     }
     .book-cover::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
-      background: rgba(0,0,0,0.35); border-radius: 6px 0 0 6px; z-index: 1;
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+      background: rgba(0,0,0,0.35); border-radius: 5px 0 0 5px; z-index: 1;
     }
     .book-cover::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, transparent 60%);
       pointer-events: none;
     }
-    .book-category { position: relative; z-index: 2; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-    .book-title-cover { position: relative; z-index: 2; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.92); }
-    .book-meta { display: flex; flex-direction: column; gap: 3px; }
+    .book-category { position: relative; z-index: 2; font-size: 7px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .book-title-cover { position: relative; z-index: 2; font-size: 12px; line-height: 1.4; color: rgba(255,255,255,0.92); }
+    .book-meta { display: flex; flex-direction: column; gap: 2px; }
     .book-title-below { font-size: 11px; color: var(--text); line-height: 1.4; }
     .book-subtitle-below { font-size: 10px; color: var(--muted); line-height: 1.4; }
-    .book-readtime { font-size: 10px; color: #444; margin-top: 2px; }
-
+    .book-readtime { font-size: 10px; color: #444; margin-top: 1px; }
     /* EMPTY STATE */
     #empty-state { display: none; text-align: center; padding: 80px 0; color: var(--muted); }
     #empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.3; }
@@ -286,10 +285,11 @@
     .spinner { width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.1); border-top-color: #ccc; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media (max-width: 600px) {
-      .lib-main { padding: 36px 20px; }
-      .lib-header { padding: 0 20px; }
-      #book-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 18px; }
+   @media (max-width: 600px) {
+      html, body { height: 100dvh; }
+      .lib-main { padding: 24px 16px 16px; }
+      .lib-header { padding: 0 16px; }
+      #book-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; }
       .modal-header { padding: 22px 20px 0; }
       .modal-divider { margin: 18px 20px 0; }
       #modal-progress-wrap, #modal-completed-text { padding-left: 20px; padding-right: 20px; }
@@ -351,16 +351,16 @@
 <!-- Library -->
 <div id="library-screen">
   <header class="lib-header">
-    <div class="lib-brand">
-      <div class="lib-brand-dot"></div>
-      Perspective Library
-    </div>
-    <div class="lib-right">
-      <div class="user-pill">
-        <div class="user-avatar" id="user-avatar-el"></div>
-        <span id="user-name-el" style="display:none"></span>
+  <a class="lib-brand" href="#">
+      <div class="lib-brand-logo">
+        <img src="logo.jpeg" alt="Perspective Library" />
       </div>
-      <button class="btn-signout" id="btn-signout">Sign out</button>
+      <span class="lib-brand-name">Perspective Library</span>
+    </a>
+    <div class="lib-right">
+      <div class="user-avatar" id="user-avatar-el"></div>
+      <button class="btn-nav" id="btn-signout">Sign out</button>
+    </div>
     </div>
   </header>
   <main class="lib-main">
@@ -752,8 +752,8 @@ auth.onAuthStateChanged(user => {
 });
 
 function showAuth() {
-  authScreen.style.display    = 'flex';
-  libraryScreen.style.display = 'none';
+  authScreen.style.display    = 'none';
+  libraryScreen.style.display = 'flex';
 }
 
 function showLibrary(user) {
