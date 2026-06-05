@@ -761,8 +761,7 @@ function showLibrary(user) {
   authScreen.style.display    = 'none';
   libraryScreen.style.display = 'block';
   const name = user.displayName || user.email?.split('@')[0] || 'Reader';
-  userNameEl.textContent   = name;
-  userNameEl.style.display = 'inline';
+
   if (user.photoURL) {
     userAvatarEl.innerHTML = `<img src="${user.photoURL}" alt="${name}" />`;
   } else {
