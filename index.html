@@ -3,8 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perspective Library</title>
+  <title>Perspective Library — Free Books on Psychology, Emotions & Mindset</title>
+  <meta name="description" content="Free short books on psychology, emotions, and self-discipline by Samarth Kulkarni. Read How To Use Anger To Your Advantage, Use Procrastination To Your Advantage, Use Conflicts To Your Advantage, and Survival — practical, no-fluff writing on why we feel and act the way we do." />
+  <meta name="keywords" content="psychology books, emotions, self discipline, mindset, anger, procrastination, conflict resolution, survival mechanism, free books, perspective library, samarth kulkarni" />
+  <meta name="author" content="Samarth Kulkarni" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://samarthkulkarni16.github.io/perspective-library/" />
   <link rel="icon" type="image/png" href="logo.jpeg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Perspective Library" />
+  <meta property="og:title" content="Perspective Library — Free Books on Psychology, Emotions & Mindset" />
+  <meta property="og:description" content="Free short books on psychology, emotions, and self-discipline — practical, no-fluff writing on why we feel and act the way we do." />
+  <meta property="og:url" content="https://samarthkulkarni16.github.io/perspective-library/" />
+  <meta property="og:image" content="https://samarthkulkarni16.github.io/perspective-library/logo.jpeg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Perspective Library — Free Books on Psychology, Emotions & Mindset" />
+  <meta name="twitter:description" content="Free short books on psychology, emotions, and self-discipline by Samarth Kulkarni." />
+  <meta name="twitter:image" content="https://samarthkulkarni16.github.io/perspective-library/logo.jpeg" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Perspective Library",
+    "url": "https://samarthkulkarni16.github.io/perspective-library/",
+    "description": "Free short books on psychology, emotions, and self-discipline by Samarth Kulkarni.",
+    "publisher": { "@type": "Person", "name": "Samarth Kulkarni" },
+    "hasPart": [
+      {
+        "@type": "Book",
+        "name": "How To Use Anger To Your Advantage",
+        "description": "Anger is not a problem if you know what it is.",
+        "genre": "Emotions",
+        "author": { "@type": "Person", "name": "Samarth Kulkarni" }
+      },
+      {
+        "@type": "Book",
+        "name": "Use Procrastination To Your Advantage",
+        "description": "Stop fighting it. Start redirecting it.",
+        "genre": "Productivity",
+        "author": { "@type": "Person", "name": "Samarth Kulkarni" }
+      },
+      {
+        "@type": "Book",
+        "name": "Use Conflicts To Your Advantage",
+        "description": "You don't need to escape problems. You need to upgrade them.",
+        "genre": "Mindset",
+        "author": { "@type": "Person", "name": "Samarth Kulkarni" }
+      },
+      {
+        "@type": "Book",
+        "name": "Survival",
+        "description": "Understanding the basic of everything we do.",
+        "genre": "Psychology",
+        "author": { "@type": "Person", "name": "Samarth Kulkarni" }
+      }
+    ]
+  }
+  </script>
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
@@ -31,10 +92,22 @@ html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-y: auto;
       -webkit-font-smoothing: antialiased;
     }
+
+    /* Public SEO preview — visible to everyone, no login required */
+    #seo-preview { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+    #seo-preview h1 { font-family: 'Rye', serif; font-size: 24px; margin-bottom: 10px; }
+    #seo-preview > p.intro { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 32px; max-width: 560px; }
+    #seo-preview article { border-top: 1px solid var(--border); padding: 20px 0; }
+    #seo-preview article h2 { font-size: 16px; margin-bottom: 4px; }
+    #seo-preview article .cat { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    #seo-preview article .sub { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    #seo-preview article p { font-size: 13px; line-height: 1.7; color: #b8b8b8; }
+    #seo-preview .cta { margin-top: 32px; font-size: 12px; color: var(--muted); }
+    #seo-preview .cta a { color: var(--text); }
 
     /* AUTH */
     #auth-screen {
@@ -1042,5 +1115,41 @@ modalClose.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
+
+<section id="seo-preview">
+  <h1>Perspective Library — Free Books on Psychology, Emotions &amp; Mindset</h1>
+  <p class="intro">Short, practical books by Samarth Kulkarni on why we feel and act the way we do — no fluff, no filler. Sign in above to read any book in full, free.</p>
+
+  <article>
+    <div class="cat">Emotions</div>
+    <h2>How To Use Anger To Your Advantage</h2>
+    <div class="sub">Anger is not a problem if you know what it is</div>
+    <p>Anger is the emotion you get when you feel something is wrong. It doesn't matter if it is actually right or wrong — if you feel it, you get angry. This book breaks down what happens in your body and brain when you get angry, and how to use that energy instead of being controlled by it.</p>
+  </article>
+
+  <article>
+    <div class="cat">Productivity</div>
+    <h2>Use Procrastination To Your Advantage</h2>
+    <div class="sub">Stop fighting it. Start redirecting it.</div>
+    <p>Procrastination isn't a willpower problem — it's the brain choosing immediate reward over long-term gain because it's wired to prioritize survival now over survival later. This book explains why procrastination happens and how to redirect it instead of fighting it.</p>
+  </article>
+
+  <article>
+    <div class="cat">Mindset</div>
+    <h2>Use Conflicts To Your Advantage</h2>
+    <div class="sub">You don't need to escape problems. You need to upgrade them.</div>
+    <p>You don't get out of problems, you upgrade them — the conflicts never really end. This book covers how to identify, sort, and substitute the conflicts in your life so you're always trading down problems for better ones.</p>
+  </article>
+
+  <article>
+    <div class="cat">Psychology</div>
+    <h2>Survival</h2>
+    <div class="sub">Understanding the basic of everything we do.</div>
+    <p>We are animals, and everything we do connects back to the survival mechanism — the core four being emotions, actions, reactions, and environment. This book focuses on emotions: why we feel pleasure, fear, and want, and how each one exists purely to keep us alive.</p>
+  </article>
+
+  <p class="cta">All four books are free to read in full — <a href="#auth-screen">sign in with Google to start reading</a>.</p>
+</section>
+
 </body>
 </html>
