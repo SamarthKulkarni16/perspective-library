@@ -40,7 +40,7 @@
         "name": "How To Use Anger To Your Advantage",
         "description": "Anger is not a problem if you know what it is.",
         "genre": "Emotions",
-        "url": "https://samarthkulkarni16.github.io/perspective-library/#how-to-use-anger-to-your-advantage",
+        "url": "https://samarthkulkarni16.github.io/perspective-library/#book/anger",
         "author": { "@type": "Person", "name": "Samarth Kulkarni" }
       },
       {
@@ -48,7 +48,7 @@
         "name": "Use Procrastination To Your Advantage",
         "description": "Stop fighting it. Start redirecting it.",
         "genre": "Productivity",
-        "url": "https://samarthkulkarni16.github.io/perspective-library/#use-procrastination-to-your-advantage",
+        "url": "https://samarthkulkarni16.github.io/perspective-library/#book/procrastination",
         "author": { "@type": "Person", "name": "Samarth Kulkarni" }
       },
       {
@@ -56,7 +56,7 @@
         "name": "Use Conflicts To Your Advantage",
         "description": "You don't need to escape problems. You need to upgrade them.",
         "genre": "Mindset",
-        "url": "https://samarthkulkarni16.github.io/perspective-library/#use-conflicts-to-your-advantage",
+        "url": "https://samarthkulkarni16.github.io/perspective-library/#book/conflicts",
         "author": { "@type": "Person", "name": "Samarth Kulkarni" }
       },
       {
@@ -64,7 +64,7 @@
         "name": "Survival",
         "description": "Understanding the basic of everything we do.",
         "genre": "Psychology",
-        "url": "https://samarthkulkarni16.github.io/perspective-library/#survival",
+        "url": "https://samarthkulkarni16.github.io/perspective-library/#book/survival",
         "author": { "@type": "Person", "name": "Samarth Kulkarni" }
       }
     ]
@@ -484,6 +484,7 @@ html, body {
 // ─── BOOKS ────────────────────────────────────────────────────────────────────
 const ARTICLES = [
   {
+    slug: "anger",
     title: "How To Use Anger To Your Advantage",
     subtitle: "Anger is not a problem if you know what it is",
     category: "Emotions",
@@ -536,6 +537,7 @@ Your Friend,
 Samarth Kulkarni`
   },
   {
+    slug: "procrastination",
     title: "Use Procrastination To Your Advantage",
     subtitle: "Stop fighting it. Start redirecting it.",
     category: "Productivity",
@@ -636,6 +638,7 @@ Your Friend,<br>
     `
   },
   {
+    slug: "conflicts",
     title: "Use Conflicts To Your Advantage",
     subtitle: "You don't need to escape problems. You need to upgrade them.",
     category: "Mindset",
@@ -705,6 +708,7 @@ Your Friend,<br>
   },
 
   {
+    slug: "survival",
     title: "Survival",
     subtitle: "Understanding the basic of everything we do.",
     category: "Psychology",
@@ -844,6 +848,7 @@ function showLibrary(user) {
     userAvatarEl.textContent = name[0].toUpperCase();
   }
   renderBooks();
+  openFromHash();
 }
 
 // ─── Google sign-in ───────────────────────────────────────────────────────────
@@ -1015,9 +1020,13 @@ let saveDebounce     = null;
 let currentBookTitle = '';
 let isCompleted      = false;
 
-async function openModal(article, color) {
+async function openModal(article, color, fromUrl) {
   currentBookTitle = article.title;
   isCompleted      = false;
+  if (!fromUrl) {
+    const want = '#book/' + slugOf(article);
+    if (location.hash !== want) history.pushState({ book: slugOf(article) }, '', location.pathname + location.search + want);
+  }
 
   modalCoverBar.style.background = color;
   modalEyebrow.textContent       = article.category || '';
@@ -1102,7 +1111,8 @@ function onModalScroll() {
   }, 3000);
 }
 
-function closeModal() {
+function closeModal(fromUrl) {
+  const wasOpen = modalOverlay.classList.contains('open');
   modalOverlay.classList.remove('open');
   document.body.style.overflow = '';
   if (scrollListener) {
@@ -1113,11 +1123,44 @@ function closeModal() {
     clearTimeout(saveDebounce);
     saveDebounce = null;
   }
+  // deep link: take the book out of the URL (no scroll, no reload)
+  if (wasOpen && !fromUrl && findBookByHash()) {
+    if (history.state && history.state.book) history.back();
+    else history.replaceState(null, '', location.pathname + location.search);
+  }
 }
 
-modalClose.addEventListener('click', closeModal);
+modalClose.addEventListener('click', () => closeModal());
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ─── Deep links: every book has its own URL (#book/<slug>) — UI unchanged ────
+// Example: https://samarthkulkarni16.github.io/perspective-library/#book/survival
+// Query strings (utm_*) are kept. Old links (#survival, #how-to-use-anger-to-your-advantage) still open the book.
+function slugOf(a) { return a.slug || legacySlugOf(a); }
+function legacySlugOf(a) { return String(a.title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+function colorFor(a) { return a.color || DEFAULT_COLORS[ARTICLES.indexOf(a) % DEFAULT_COLORS.length]; }
+function findBookByHash() {
+  let key = '';
+  try { key = decodeURIComponent(location.hash || ''); } catch (e) { key = location.hash || ''; }
+  key = key.replace(/^#/, '').replace(/^book\//, '').toLowerCase();
+  if (!key) return null;
+  return ARTICLES.find(a => slugOf(a) === key || legacySlugOf(a) === key) || null;
+}
+function openFromHash() {
+  const a = findBookByHash();
+  const isOpen = modalOverlay.classList.contains('open');
+  if (a) {
+    if (isOpen && currentBookTitle === a.title) return;
+    if (isOpen) closeModal(true);
+    window.scrollTo(0, 0);
+    openModal(a, colorFor(a), true);
+  } else if (isOpen) {
+    closeModal(true);
+  }
+}
+window.addEventListener('hashchange', () => { if (currentUser) openFromHash(); });
+
 </script>
 
 <section id="seo-preview">
