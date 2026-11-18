@@ -1,10 +1,10 @@
-# PL SYNC FAILED 2026-11-03 18:31 IST: the language sites were NOT changed (the old versions stay live). Retry on the next cycle (max 3 tries per hour).
+# PL SYNC 2026-11-18 16:03 IST: original changed, all 4 language sites rebuilt, tested and deployed
 
-# PL LANGUAGE SITES 2026-11-03 18:31 IST
+# PL LANGUAGE SITES 2026-11-18 16:03 IST
 
 ## hi: build rc=0 (0=complete 3=some English left 2=failed), test rc=0
-books = 4
-stats = {'cache': 124, 'cache_fixed': 12}
+books = 5
+stats = {'cache': 128, 'cache_fixed': 12, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_English': 1}
 complete = True
 engine_key = True
 model = samarth-free-chain
@@ -14,12 +14,12 @@ missing = []
 untranslated = []
 uncovered_ui = ['ARTICLES', 'array in the source code.']
 LANGTEST [hi] RESULT: ALL PASS
-[hi] book survival
-[hi] DONE complete=True stats={'cache': 124, 'cache_fixed': 12} missing=[]
+[hi] 20 new blocks translated, stats={'cache': 127, 'cache_fixed': 12, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_English': 1}
+[hi] DONE complete=True stats={'cache': 128, 'cache_fixed': 12, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_English': 1} missing=[]
 
 ## ar: build rc=0 (0=complete 3=some English left 2=failed), test rc=0
-books = 4
-stats = {'cache': 133, 'cache_fixed': 3}
+books = 5
+stats = {'cache': 137, 'cache_fixed': 3, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_contains': 3}
 complete = True
 engine_key = True
 model = samarth-free-chain
@@ -29,12 +29,12 @@ missing = []
 untranslated = []
 uncovered_ui = ['ARTICLES', 'array in the source code.']
 LANGTEST [ar] RESULT: ALL PASS
-[ar] book survival
-[ar] DONE complete=True stats={'cache': 133, 'cache_fixed': 3} missing=[]
+[ar] 20 new blocks translated, stats={'cache': 136, 'cache_fixed': 3, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_contains': 3}
+[ar] DONE complete=True stats={'cache': 137, 'cache_fixed': 3, 'llm': 20, 'llm_reject_tail': 1, 'llm_reject_contains': 3} missing=[]
 
 ## pt: build rc=0 (0=complete 3=some English left 2=failed), test rc=0
-books = 4
-stats = {'cache': 134, 'cache_fixed': 13}
+books = 5
+stats = {'cache': 138, 'cache_fixed': 13, 'llm': 20}
 complete = True
 engine_key = True
 model = samarth-free-chain
@@ -44,12 +44,12 @@ missing = []
 untranslated = []
 uncovered_ui = ['ARTICLES', 'array in the source code.']
 LANGTEST [pt] RESULT: ALL PASS
-[pt] book survival
-[pt] DONE complete=True stats={'cache': 134, 'cache_fixed': 13} missing=[]
+[pt] 20 new blocks translated, stats={'cache': 137, 'cache_fixed': 13, 'llm': 20}
+[pt] DONE complete=True stats={'cache': 138, 'cache_fixed': 13, 'llm': 20} missing=[]
 
 ## es: build rc=0 (0=complete 3=some English left 2=failed), test rc=0
-books = 4
-stats = {'cache': 134, 'cache_fixed': 2}
+books = 5
+stats = {'cache': 138, 'cache_fixed': 2, 'llm': 20}
 complete = True
 engine_key = True
 model = samarth-free-chain
@@ -59,5 +59,5 @@ missing = []
 untranslated = []
 uncovered_ui = ['ARTICLES', 'array in the source code.']
 LANGTEST [es] RESULT: ALL PASS
-[es] book survival
-[es] DONE complete=True stats={'cache': 134, 'cache_fixed': 2} missing=[]
+[es] 20 new blocks translated, stats={'cache': 137, 'cache_fixed': 2, 'llm': 20}
+[es] DONE complete=True stats={'cache': 138, 'cache_fixed': 2, 'llm': 20} missing=[]
